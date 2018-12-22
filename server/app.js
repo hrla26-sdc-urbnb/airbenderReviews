@@ -4,11 +4,11 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 const app = express();
-// const router = require('./router');
+const router = require('./router');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use('/', router);
+app.use('/', router);
 
 
 app.use(express.static(path.join(__dirname, '../client/dist')));

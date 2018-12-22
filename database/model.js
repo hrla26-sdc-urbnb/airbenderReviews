@@ -27,7 +27,6 @@ const airbenderMock = sequelize.define('airbenderMock', {
 
 airbenderMock.sync({
   // drop table if exists
-  force: true,
 })
   .then(() => console.log('synced model!'))
   .catch(err => console.error(err));
