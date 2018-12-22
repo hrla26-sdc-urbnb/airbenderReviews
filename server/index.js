@@ -6,9 +6,9 @@ const port = 2019;
 const server = http.createServer(app);
 
 server.listen(port, (err) => {
-    if (err) {
-        console.error(err);
-    } else {
-        console.log('sucessfully listening on port ', port);
-    }
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('sucessfully listening on port ', port);
+  }
 });
