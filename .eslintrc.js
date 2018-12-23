@@ -21,6 +21,7 @@ module.exports = {
         "no-console": "off",
         "import/newline-after-import": "off",
         "react/jsx-filename-extension": 0,
-        "import/extensions": 0
+        "import/extensions": 0,
+        "no-plusplus": "off",
     }
 }

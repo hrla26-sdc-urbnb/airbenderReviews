@@ -6,4 +6,14 @@ const getAllHelper = (cb) => {
     .catch(err => console.error(err));
 };
 
-module.exports = { getAllHelper };
+const getAllFromIdHelper = (roomId, cb) => {
+  airbenderMock.findAll({
+    where: {
+      productId: roomId,
+    },
+  })
+    .then(cb)
+    .catch(err => console.error(err));
+};
+
+module.exports = { getAllHelper, getAllFromIdHelper };

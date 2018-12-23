@@ -1,4 +1,4 @@
-const { getAllHelper } = require('../database/dbHelper');
+const { getAllHelper, getAllFromIdHelper } = require('../database/dbHelper');
 
 const getAll = (req, res) => {
   getAllHelper((data) => {
@@ -7,4 +7,12 @@ const getAll = (req, res) => {
   });
 };
 
-module.exports = { getAll };
+const getAllFromId = (req, res) => {
+  const roomId = req.params.id;
+  getAllFromIdHelper(roomId, (data) => {
+    console.log('got reviews from room', roomId);
+    res.status(200).send(data);
+  });
+};
+
+module.exports = { getAll, getAllFromId };
