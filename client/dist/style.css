@@ -1,0 +1,97 @@
+body {
+  display: flex;
+  margin: 15%;
+  margin-top: 0%;
+  padding:0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #484848;
+
+}
+
+p {
+  font-size: 16px;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+.pageNumbers {
+  list-style: none;
+  display: flex;
+}
+
+.pageNumbers > li {
+  margin-right:0.3em;
+  color: #00858c;
+  user-select: none;
+  cursor: pointer;
+}
+
+.proPic {
+border-radius: 50%;
+width: 49px;
+height: 49px;
+float: left;
+margin-right: 15px;
+
+}
+
+.divider {
+  border-bottom-width: 0.25px;
+  border-bottom-color: lightgray;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.noReviews {
+  
+  font-weight: 700;
+  font-size: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.flexOne {
+  display:flex;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  align-content: flex-start;
+ 
+}
+
+.finalAvg {
+  margin-left: 3%;
+}
+
+.flexTwo {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.flexStars {
+  display: flex;
+  
+  
+  flex-wrap: wrap;
+  
+}
+
+.flexFour {
+  display:flex;
+  margin-left: -5%;
+}
+
+.userName {
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  
+}
+.postTime {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
