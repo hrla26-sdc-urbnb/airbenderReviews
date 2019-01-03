@@ -12,6 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
+      oldReviews: [],
       accuracyAvg: 0,
       checkinAvg: 0,
       cleanlinessAvg: 0,
@@ -21,10 +22,13 @@ export default class App extends React.Component {
       finalAvg: 0,
       currentPage: 1,
       reviewsPerPage: 7,
+      searchBar: null,
     };
     // this.getReviews = this.getReviews.bind(this);
     this.getReviewsById = this.getReviewsById.bind(this);
     this.handleClickPage = this.handleClickPage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +87,35 @@ export default class App extends React.Component {
     });
   }
 
+  handleChange(e) {
+    console.log('yo', e.key);
+    let searchTerm = e.target.value;
+    this.setState({ searchBar: searchTerm });
+        if (e.key === 'Enter') {
+          console.log('searched', searchTerm);
+          this.handleSearch();
+  }
+}
+
+  handleSearch() {
+    console.log('filter', this.state.searchBar);
+    let filteredReviews = this.state.reviews.filter((element, i) => {
+      return element.reviewContent.includes(this.state.searchBar);
+      // if (element.reviewContent === searchBar) {
+      //   return true;
+      // }
+      // return false;
+    });
+    console.log('yote yaw');
+    if (filteredReviews.length < 0) {
+      console.log('searchBar not found');
+      filteredReviews.push({ reviewContent: `None of our guests have mentioned "${searchBar}"` });
+      this.setState({ oldReviews: this.state.reviews });
+      this.render();
+    }
+    this.setState({ reviews: filteredReviews });
+  }
+
   render() {
     // subdividing reviews
     const {
@@ -111,12 +144,6 @@ export default class App extends React.Component {
         <li className="pagination" key={num} id={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
-    // for (let i = 0; i < reviews.length; i++) {
-    //   accuracyAvg += reviews[i].accuracyStar;
-    // }
-    // let accuracyCount = reviews.forEach((element) => {
-    //   count += element.accuracyStar;
-    // });
     return (
       <div id="reviews">
         <hr className="divider" />
@@ -195,11 +222,11 @@ export default class App extends React.Component {
               <i className="material-icons">
               search
               </i>
-              <input className="input" type="text" placeholder="Search reviews" />
+              <input className="input" type="text" placeholder="Search reviews" onKeyPress={this.handleChange} />
             </div>
             <select className="dropDown">
-              <option>Most relevant</option>
               <option>Most recent</option>
+              <option>Most relevant</option>
             </select>
           </div>
         </div>
