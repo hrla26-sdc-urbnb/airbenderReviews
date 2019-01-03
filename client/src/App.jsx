@@ -108,7 +108,7 @@ export default class App extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((num) => {
       return (
-        <li key={num} id={num} onClick={this.handleClickPage}>{num}</li>
+        <li className="pagination" key={num} id={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
     // for (let i = 0; i < reviews.length; i++) {
@@ -126,79 +126,85 @@ export default class App extends React.Component {
             <span> Reviews</span>
           </div>
           <div className="finalAvg">
-            <span>  *****</span>
-            {finalAvg}
+            <span className="finalStar">
+              {[...Array(finalAvg)].map((e, i) => {
+                return <span key={i}> &#9733; </span>;
+              })}
+            </span>
           </div>
         </div>
         <hr className="divider" />
-        <div className="flexStars">
-          <div className="flexTwo">
-            <div className="accuracyStar">
-              Accuracy *****
-              {accuracyAvg}
+        <div className="flexThreeFive">
+
+          <div className="flexStars">
+            <div className="flexTwo">
+              <div className="accuracyStar">
+              Accuracy
+                <span className="star">
+                  {[...Array(accuracyAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}>  &#9733;  </span>;
+                  })}
+                </span>
+              </div>
+              <div className="communicationStar">
+              Communication
+                <span className="star">
+                  {[...Array(communicationAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}> &#9733; </span>;
+                  })}
+                </span>
+              </div>
+              <div className="cleanlinessStar">
+              Cleanliness
+                <span className="star">
+                  {[...Array(cleanlinessAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}> &#9733; </span>;
+                  })}
+                </span>
+              </div>
             </div>
-            <div className="communicationStar">
-              Communication *****
-              {communicationAvg}
-            </div>
-            <div className="cleanlinessStar">
-              Cleanliness *****
-              {cleanlinessAvg}
+            <div className="flexThree">
+              <div className="locationStar">
+              Location
+                <span className="star">
+                  {[...Array(locationAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}> &#9733; </span>;
+                  })}
+                </span>
+              </div>
+              <div className="checkinStar">
+              Check-in
+                <span className="star">
+                  {[...Array(checkinAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}> &#9733; </span>;
+                  })}
+                </span>
+              </div>
+              <div className="valueStar">
+              Value
+                <span className="star">
+                  {[...Array(valueAvg)].map((e, i) => {
+                    return <span className="singleStar" key={i}> &#9733; </span>;
+                  })}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="flexThree">
-            <div className="locationStar">
-              Location *****
-              {locationAvg}
+          <div className="misc">
+            <div className="searchBar">
+              <input type="text" placeholder="Search reviews" />
+              
             </div>
-            <div className="checkinStar">
-              Check-in *****
-              {checkinAvg}
-            </div>
-            <div className="valueStar">
-              Value *****
-              {valueAvg}
-            </div>
+            <select>
+              <option>Most relevant</option>
+              <option>Most recent</option>
+            </select>
           </div>
         </div>
-        <input type="text" placeholder="Search reviews" />
+
         <hr className="divider" />
         <div className="flexFour">
           <ReviewList currentReviews={currentReviews} />
-        </div>
-        <div className="review1">
-          <div>
-            userPic
-          </div>
-          <div>
-            userId
-          </div>
-          <div>
-            createdAt
-          </div>
-          <div>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
-            reiciendis unde, illo qui sunt quam itaque vitae quos dolorem modi! Doloribus, ut!
-            </p>
-          </div>
-        </div>
-        <div className="review2">
-          <div>
-            userPic
-          </div>
-          <div>
-            userId
-          </div>
-          <div>
-            createdAt
-          </div>
-          <div>
-            <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
-            reiciendis unde, illo qui sunt quam itaque vitae quos dolorem modi! Doloribus, ut!
-            </p>
-          </div>
         </div>
         <ul className="pageNumbers">
           {renderPageNumbers}
