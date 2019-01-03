@@ -192,10 +192,12 @@ export default class App extends React.Component {
           </div>
           <div className="misc">
             <div className="searchBar">
-              <input type="text" placeholder="Search reviews" />
-              
+              <i className="material-icons">
+              search
+              </i>
+              <input className="input" type="text" placeholder="Search reviews" />
             </div>
-            <select>
+            <select className="dropDown">
               <option>Most relevant</option>
               <option>Most recent</option>
             </select>
