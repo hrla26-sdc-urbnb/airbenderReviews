@@ -11,18 +11,22 @@ body {
 }
 
 p {
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
 
 ul, ol {
+  font-family: 'Roboto', sans-serif;
   list-style-type: none;
 }
 .pageNumbers {
+  font-family: 'Roboto', sans-serif;
   list-style: none;
   display: flex;
 }
 
 .pageNumbers > li {
+  font-family: 'Roboto', sans-serif;
   margin-right:0.3em;
   color: #00858c;
   user-select: none;
@@ -48,7 +52,7 @@ margin-bottom: 15px;
 }
 
 .noReviews {
-  
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 24px;
   margin-top: 1em;
@@ -60,7 +64,7 @@ margin-bottom: 15px;
   padding-bottom: 2px;
   align-items: baseline;
   justify-content: flex-start;
- 
+  font-family: 'Roboto', sans-serif;
 }
 
 .finalAvg {
@@ -70,6 +74,7 @@ margin-bottom: 15px;
 }
 
 .flexTwo {
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
@@ -78,6 +83,7 @@ margin-bottom: 15px;
 }
 
 .flexStars {
+  font-family: 'Roboto', sans-serif;
   margin-top: -5px;
   display: flex;
   justify-content: space-between;
@@ -87,6 +93,7 @@ margin-bottom: 15px;
 }
 
 .flexThree {
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction: column;
   justify-content: space-around;
@@ -95,6 +102,7 @@ margin-bottom: 15px;
 }
 
 .flexFour {
+  font-family: 'Roboto', sans-serif;
   display:flex;
   flex-direction: column;
   align-items: flex-start;
@@ -103,12 +111,14 @@ margin-bottom: 15px;
 }
 
 .userName {
+  font-family: 'Roboto', sans-serif;
   margin-bottom: 5px;
   font-weight: 700;
   font-size: 16px;
   
 }
 .postTime {
+  font-family: 'Roboto', sans-serif;
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -124,11 +134,13 @@ margin-bottom: 15px;
 }
 
 .reviewBody {
+  font-family: 'Roboto', sans-serif;
   font-weight: 100;
   padding-bottom: 2em;
 }
 
 .pagination {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,44 +151,52 @@ margin-bottom: 15px;
 }
 
 .communicationStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 .accuracyStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 .cleanlinessStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 
 .locationStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 .checkinStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 .valueStar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: space-between;
 }
 
 .reviewList {
   
-
+  font-family: 'Roboto', sans-serif;
   width: 664px;
   padding: 0px;
   
 }
 
 .reviewItem {
+  font-family: 'Roboto', sans-serif;
   padding-bottom: 2em;
 }
 
 .misc {
+  font-family: 'Roboto', sans-serif;
   width: 664px;
   display: flex;
   flex-direction: row;
@@ -186,12 +206,14 @@ margin-bottom: 15px;
 }
 
 .flexThreeFive {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
 .input {
+  font-family: 'Roboto', sans-serif;
   border: none;
   display: flex;
   font-size: 14px;
@@ -205,6 +227,7 @@ margin-bottom: 15px;
   justify-content: flex-start;
 }
 .searchBar {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
   border: 1px solid lightgray;
@@ -230,6 +253,7 @@ margin-bottom: 15px;
 }
 
 .dropDown {
+  font-family: 'Roboto', sans-serif;
   height: 34px;
   width: 203px;
   margin-top: 5px;
