@@ -13,7 +13,7 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('mysql://ubuntu:password@localhost/airbenderReviews');
+const sequelize = new Sequelize('mysql://root:password@localhost/airbenderReviews');
 
 sequelize
   .authenticate()
