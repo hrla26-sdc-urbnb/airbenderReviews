@@ -24,6 +24,7 @@ export default class App extends React.Component {
       currentPage: 1,
       reviewsPerPage: 7,
       searchBar: null,
+      isPaginationActive: false,
     };
     // this.getReviews = this.getReviews.bind(this);
     this.getReviewsById = this.getReviewsById.bind(this);
@@ -83,8 +84,10 @@ export default class App extends React.Component {
   }
 
   handleClickPage(e) {
+    const { isPaginationActive } = this.state;
     this.setState({
       currentPage: Number(e.target.id),
+      isPaginationActive: !isPaginationActive,
     });
   }
 
@@ -104,17 +107,11 @@ export default class App extends React.Component {
     console.log('filter', this.state.searchBar);
     let filteredReviews = this.state.reviews.filter((element, i) => {
       return element.reviewContent.includes(this.state.searchBar);
-      // if (element.reviewContent === searchBar) {
-      //   return true;
-      // }
-      // return false;
     });
-    console.log('yote yaw');
     if (filteredReviews.length < 1) {
       console.log('searchBar not found');
       filteredReviews.push({ reviewContent: `None of our guests have mentioned "${this.state.searchBar}"` });
       this.setState({ oldReviews: this.state.reviews });
-      // this.render();
     }
     this.setState({ reviews: filteredReviews });
   }
@@ -133,6 +130,7 @@ export default class App extends React.Component {
       locationAvg,
       valueAvg,
       finalAvg,
+      isPaginationActive,
     } = this.state;
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -145,7 +143,7 @@ export default class App extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((num) => {
       return (
-        <li className="pagination" key={num} onClick={this.handleClickPage}>{num}</li>
+        <li className={isPaginationActive ? 'pagination' : 'notPagination'} key={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
     return (

@@ -25,13 +25,13 @@ ul, ol {
   display: flex;
 }
 
-.pageNumbers > li {
+/* .pageNumbers > li {
   font-family: 'Roboto', sans-serif;
   margin-right:0.3em;
   color: #00858c;
   user-select: none;
   cursor: pointer;
-}
+} */
 
 .proPic {
 border-radius: 50%;
@@ -146,12 +146,17 @@ margin-bottom: 15px;
   align-items: center;
   height: 32px;
   width: 32px;
+  color: white;
+  border-radius: 50%;
+  background-color: #00858c;
 }
 
-.activate {
-  border-radius: 50%;
-  border: 1px solid #00858c;
-  
+.notPagination {
+  font-family: 'Roboto', sans-serif;
+  margin-right:0.3em;
+  color: #00858c;
+  user-select: none;
+  cursor: pointer;
 }
 
 .communicationStar {
