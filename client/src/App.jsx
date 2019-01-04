@@ -49,7 +49,7 @@ export default class App extends React.Component {
 
   getReviewsById() {
     const roomId = generateRandomNumberBetween(11111, 11210);
-    axios.get(`/reviews/${roomId}`)
+    axios.get(`http://localhost:2019/reviews/${roomId}`)
       .then((data) => {
         console.log(`loaded all data for ${roomId}`, data.data, data.data.length);
         // getting and averaging each star
