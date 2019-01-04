@@ -1,14 +1,18 @@
-const http = require('http');
-const app = require('./app');
-const db = require('../database/index');
-const airbenderMock = require('../database/model');
-const port = 2019;
-const server = http.createServer(app);
+const express = require('express');
 
-server.listen(port, (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('sucessfully listening on port ', port);
-  }
-});
+const port = 6969;
+
+const path = require('path');
+
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use('/', router);
+
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.listen(port, () => console.log('sucessfully listening on port', port));
