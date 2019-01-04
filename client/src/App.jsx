@@ -143,7 +143,7 @@ export default class App extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((num) => {
       return (
-        <li className={isPaginationActive ? 'pagination' : 'notPagination'} key={num} onClick={this.handleClickPage}>{num}</li>
+        <li className='pagination' key={num} id={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
     return (
