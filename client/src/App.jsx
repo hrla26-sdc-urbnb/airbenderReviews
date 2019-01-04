@@ -12,6 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
+      totalEntries: 0,
       oldReviews: [],
       accuracyAvg: 0,
       checkinAvg: 0,
@@ -68,6 +69,7 @@ export default class App extends React.Component {
         }
         this.setState({
           reviews: data.data,
+          totalEntries: data.data.length,
           accuracyAvg: Math.ceil(finalAccuracy / data.data.length),
           checkinAvg: Math.ceil(finalCheckin / data.data.length),
           cleanlinessAvg: Math.ceil(finalCleanliness / data.data.length),
@@ -75,8 +77,7 @@ export default class App extends React.Component {
           locationAvg: Math.ceil(finalLocation / data.data.length),
           valueAvg: Math.ceil(finalValue / data.data.length),
         });
-        this.setState({ finalAvg: Math.ceil((this.state.accuracyAvg + this.state.checkinAvg + this.state.cleanlinessAvg + this.state.communicationAvg + this.state.locationAvg + this.state.valueAvg) / 6), });
-        console.log('yeet yaw', this.state.valueAvg);
+        this.setState({ finalAvg: Math.ceil((this.state.accuracyAvg + this.state.checkinAvg + this.state.cleanlinessAvg + this.state.communicationAvg + this.state.locationAvg + this.state.valueAvg) / 6) });
       })
       .catch(err => console.error(err));
   }
@@ -89,12 +90,14 @@ export default class App extends React.Component {
 
   handleChange(e) {
     console.log('yo', e.key);
+    let keyPress = e.key;
     let searchTerm = e.target.value;
-    this.setState({ searchBar: searchTerm });
-        if (e.key === 'Enter') {
-          console.log('searched', searchTerm);
-          this.handleSearch();
-  }
+    this.setState({ searchBar: searchTerm }, () => {
+      if (keyPress === 'Enter') {
+        // console.log('searched', e.target.value);
+        this.handleSearch();
+      }
+    });
 }
 
   handleSearch() {
@@ -107,11 +110,11 @@ export default class App extends React.Component {
       // return false;
     });
     console.log('yote yaw');
-    if (filteredReviews.length < 0) {
+    if (filteredReviews.length < 1) {
       console.log('searchBar not found');
-      filteredReviews.push({ reviewContent: `None of our guests have mentioned "${searchBar}"` });
+      filteredReviews.push({ reviewContent: `None of our guests have mentioned "${this.state.searchBar}"` });
       this.setState({ oldReviews: this.state.reviews });
-      this.render();
+      // this.render();
     }
     this.setState({ reviews: filteredReviews });
   }
@@ -120,6 +123,7 @@ export default class App extends React.Component {
     // subdividing reviews
     const {
       reviews,
+      totalEntries,
       accuracyAvg,
       currentPage,
       reviewsPerPage,
@@ -141,7 +145,7 @@ export default class App extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((num) => {
       return (
-        <li className="pagination" key={num} id={num} onClick={this.handleClickPage}>{num}</li>
+        <li className="pagination" key={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
     return (
@@ -149,7 +153,7 @@ export default class App extends React.Component {
         <hr className="divider" />
         <div className="flexOne">
           <div className="noReviews">
-            {reviews.length}
+            {totalEntries}
             <span> Reviews</span>
           </div>
           <div className="finalAvg">
