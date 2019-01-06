@@ -26,7 +26,7 @@ export default class App extends React.Component {
       reviewsPerPage: 7,
       searchBar: null,
       isCurrentPage: false,
-      isSearchFound: true,
+      isSearchFound: 1,
     };
     // this.getReviews = this.getReviews.bind(this);
     this.getReviewsById = this.getReviewsById.bind(this);
@@ -108,21 +108,23 @@ export default class App extends React.Component {
 
   handleSearch() {
     console.log('filter', this.state.searchBar);
+    this.setState({ oldReviews: this.state.reviews})
     let filteredReviews = this.state.reviews.filter((element, i) => {
       return element.reviewContent.includes(this.state.searchBar);
     });
+    this.setState({ reviews: filteredReviews, isSearchFound: 3, });
     if (filteredReviews.length < 1) {
       console.log('searchBar not found');
       filteredReviews.push({ reviewContent: `None of our guests have mentioned "${this.state.searchBar}"` });
-      this.setState({ oldReviews: this.state.reviews, isSearchFound: false, });
+      this.setState({ isSearchFound: 2, });
     }
-    this.setState({ reviews: filteredReviews });
   }
 
   handleNotFound() {
     let { isSearchFound, oldReviews, reviews } = this.state;
-    this.setState({ isSearchFound: true, reviews: oldReviews });
+    this.setState({ isSearchFound: 1, reviews: oldReviews });
   }
+
 
   // makePageArr() {
   //   let { pageNumbers, currentPage, reviewsPerPage } = this.state;
