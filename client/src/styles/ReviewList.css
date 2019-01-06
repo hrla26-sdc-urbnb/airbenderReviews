@@ -1,0 +1,43 @@
+.reviewList {
+  font-family: 'Roboto', sans-serif;
+  width: 550px;
+  padding: 0px;
+}
+
+.reviewBody {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  padding-bottom: 2em;
+  font-size: 16px;
+}
+
+
+.notFoundButton {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #008489;
+  cursor: pointer;
+  width: 160px;
+  height: 16px;
+  margin-left: 40px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reviewNotFound {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  color: #484848;
+  margin-left: 60px;
+}
+
+.searchNotFound {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

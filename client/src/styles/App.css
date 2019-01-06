@@ -1,0 +1,235 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 350px;
+  width: 550px;
+  display: flex;
+  margin-top: 0%;
+  padding:0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #484848;
+}
+
+ul, ol {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+
+}
+
+.divider {
+  border-bottom-width: 0.25px;
+  border-bottom-color: lightgray;
+  line-height: 2.5em;
+  width: 550px;
+  margin-top: 1.5em;
+  margin-bottom: 10px;
+}
+
+.flexOne {
+  display:flex;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  align-items: baseline;
+  justify-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+}
+
+.noReviews {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 1em;
+}
+
+.finalAvg {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 3%;
+}
+
+.finalStar {
+  width: 120px;
+  height: 18px;
+  color: #00858c;
+}
+
+.flexThreeFive {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.flexStars {
+  font-family: 'Roboto', sans-serif;
+  margin-top: -5px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 2em;
+}
+
+.flexTwo {
+  font-family: 'Roboto', sans-serif;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 316px;
+}
+
+.accuracyStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.star {
+  color: #00858c;
+  display:flex;
+  justify-content: flex-start;
+  width: 110px;
+  height: 18px;
+}
+
+.singleStar {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.communicationStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cleanlinessStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexThree {
+  font-family: 'Roboto', sans-serif;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  width: 316px;
+}
+
+.locationStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+.checkinStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+.valueStar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.misc {
+  font-family: 'Roboto', sans-serif;
+  width: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 1.43;
+  margin-top: 1.5em;
+}
+
+.searchBar {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 212px;
+  height: 43px;
+}
+.materialIcons {
+  float: left;
+  margin-top: 13px;
+  margin-left: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.input {
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 9px;
+  padding-right: 7px;
+  width: 180px;
+  height: 26px;
+  justify-content: space-between;
+}
+
+.dropDown {
+  font-family: 'Roboto', sans-serif;
+  height: 34px;
+  width: 203px;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 100;
+  background-color: white;
+}
+
+.flexFour {
+  font-family: 'Roboto', sans-serif;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  width: 550px;
+}
+
+.pageNumbers {
+  font-family: 'Roboto', sans-serif;
+  list-style: none;
+  display: flex;
+}
+
+.pageNumbers > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  margin-right:0.3em;
+  user-select: none;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+.isCurrentPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 50%;
+  background-color: #00858c;
+  color: white;
+}
+
+.notCurrentPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  color: #00858c;
+}
+

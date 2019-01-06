@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
+import styles from './styles/App.css';
 
 
 function generateRandomNumberBetween(beg, end) {
@@ -24,13 +25,15 @@ export default class App extends React.Component {
       currentPage: 1,
       reviewsPerPage: 7,
       searchBar: null,
-      isPaginationActive: false,
+      isCurrentPage: false,
+      isSearchFound: true,
     };
     // this.getReviews = this.getReviews.bind(this);
     this.getReviewsById = this.getReviewsById.bind(this);
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleNotFound = this.handleNotFound.bind(this);
   }
 
   componentDidMount() {
@@ -84,10 +87,10 @@ export default class App extends React.Component {
   }
 
   handleClickPage(e) {
-    const { isPaginationActive } = this.state;
+    const { isCurrentPage } = this.state;
     this.setState({
       currentPage: Number(e.target.id),
-      isPaginationActive: !isPaginationActive,
+      isCurrentPage: !isCurrentPage,
     });
   }
 
@@ -101,7 +104,7 @@ export default class App extends React.Component {
         this.handleSearch();
       }
     });
-}
+  }
 
   handleSearch() {
     console.log('filter', this.state.searchBar);
@@ -111,10 +114,25 @@ export default class App extends React.Component {
     if (filteredReviews.length < 1) {
       console.log('searchBar not found');
       filteredReviews.push({ reviewContent: `None of our guests have mentioned "${this.state.searchBar}"` });
-      this.setState({ oldReviews: this.state.reviews });
+      this.setState({ oldReviews: this.state.reviews, isSearchFound: false, });
     }
     this.setState({ reviews: filteredReviews });
   }
+
+  handleNotFound() {
+    let { isSearchFound, oldReviews, reviews } = this.state;
+    this.setState({ isSearchFound: true, reviews: oldReviews });
+  }
+
+  // makePageArr() {
+  //   let { pageNumbers, currentPage, reviewsPerPage } = this.state;
+  //   const indexOfLastReview = currentPage * reviewsPerPage;
+  //   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  //   const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+  //   let arr = for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i++) {
+  //     pageNumbers.push(i);
+  //   }
+  // }
 
   render() {
     // subdividing reviews
@@ -130,7 +148,8 @@ export default class App extends React.Component {
       locationAvg,
       valueAvg,
       finalAvg,
-      isPaginationActive,
+      isCurrentPage,
+      isSearchFound,
     } = this.state;
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -143,101 +162,99 @@ export default class App extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((num) => {
       return (
-        <li className='pagination' key={num} id={num} onClick={this.handleClickPage}>{num}</li>
+        <li className={(num === currentPage) ? styles.isCurrentPage : styles.notCurrentPage } key={num} id={num} onClick={this.handleClickPage}>{num}</li>
       );
     });
     return (
-      <div id="reviews">
-        <hr className="divider" />
-        <div className="flexOne">
-          <div className="noReviews">
+      <div id={styles.container}>
+        <hr className={styles.divider} />
+        <div className={styles.flexOne}>
+          <div className={styles.noReviews}>
             {totalEntries}
             <span> Reviews</span>
           </div>
-          <div className="finalAvg">
-            <span className="finalStar">
+          <div className={styles.finalAvg}>
+            <span className={styles.finalStar}>
               {[...Array(finalAvg)].map((e, i) => {
                 return <span key={i}> &#9733; </span>;
               })}
             </span>
           </div>
         </div>
-        <hr className="divider" />
-        <div className="flexThreeFive">
+        <hr className={styles.divider} />
+        <div className={styles.flexThreeFive}>
 
-          <div className="flexStars">
-            <div className="flexTwo">
-              <div className="accuracyStar">
+          <div className={styles.flexStars}>
+            <div className={styles.flexTwo}>
+              <div className={styles.accuracyStar}>
               Accuracy
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(accuracyAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}>  &#9733;  </span>;
+                    return <span className={styles.singleStar} key={i}>  &#9733;  </span>;
                   })}
                 </span>
               </div>
-              <div className="communicationStar">
+              <div className={styles.communicationStar}>
               Communication
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(communicationAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}> &#9733; </span>;
+                    return <span className={styles.singleStar} key={i}> &#9733; </span>;
                   })}
                 </span>
               </div>
-              <div className="cleanlinessStar">
+              <div className={styles.cleanlinessStar}>
               Cleanliness
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(cleanlinessAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}> &#9733; </span>;
+                    return <span className={styles.singleStar} key={i}> &#9733; </span>;
                   })}
                 </span>
               </div>
             </div>
-            <div className="flexThree">
-              <div className="locationStar">
+            <div className={styles.flexThree}>
+              <div className={styles.locationStar}>
               Location
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(locationAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}> &#9733; </span>;
+                    return <span className={styles.singleStar} key={i}> &#9733; </span>;
                   })}
                 </span>
               </div>
-              <div className="checkinStar">
+              <div className={styles.checkinStar}>
               Check-in
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(checkinAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}> &#9733; </span>;
+                    return <span className={styles.singleStar} key={i}> &#9733; </span>;
                   })}
                 </span>
               </div>
-              <div className="valueStar">
+              <div className={styles.valueStar}>
               Value
-                <span className="star">
+                <span className={styles.star}>
                   {[...Array(valueAvg)].map((e, i) => {
-                    return <span className="singleStar" key={i}> &#9733; </span>;
+                    return <span className={styles.singleStar} key={i}> &#9733; </span>;
                   })}
                 </span>
               </div>
             </div>
           </div>
-          <div className="misc">
-            <div className="searchBar">
-              <i className="material-icons">
-              search
-              </i>
-              <input className="input" type="text" placeholder="Search reviews" onKeyPress={this.handleChange} />
+          <div className={styles.misc}>
+            <div className={styles.searchBar}>
+              <img src="https://s3-us-west-1.amazonaws.com/mysuffering/search.png" alt="search" className={styles.materialIcons} />
+              <input className={styles.input} type="text" placeholder="Search reviews" onKeyPress={this.handleChange} />
             </div>
-            <select className="dropDown">
+            <select className={styles.dropDown}>
               <option>Most recent</option>
               <option>Most relevant</option>
             </select>
           </div>
         </div>
 
-        <hr className="divider" />
-        <div className="flexFour">
-          <ReviewList currentReviews={currentReviews} />
+        <hr className={styles.divider} />
+        <div className={styles.flexFour}>
+          <ReviewList currentReviews={currentReviews} isSearchFound={isSearchFound} handleNotFound={this.handleNotFound} />
         </div>
-        <ul className="pageNumbers">
+        <ul className={styles.pageNumbers}>
           {renderPageNumbers}
         </ul>
       </div>
