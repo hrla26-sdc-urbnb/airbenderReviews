@@ -10,10 +10,30 @@
 //     if (err) console.error(err);
 //     console.log('connected to mysql!');
 // });
+// const pg = require('pg');
+
+// const connectionString = 'postgres://postgres@localhost:2019/postgres';
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('mysql://root:password@localhost/airbenderReviews');
+// const sequelize = new Sequelize('mysql://root:password@localhost/airbenderReviews');
+
+// pg.connect(connectionString, err=>{
+//       if (err) console.error(err);
+//       console.log('connected to mysql!');
+//   });
+// 
+const sequelize = new Sequelize('airbenderreviews', '', '', {
+  host: 'localhost',
+  dialect: 'postgres',
+  pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+  },
+  operatorsAliases: false
+});
 
 sequelize
   .authenticate()

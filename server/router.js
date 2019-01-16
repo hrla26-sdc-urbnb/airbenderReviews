@@ -1,10 +1,13 @@
 const router = require('express').Router();
-const { getAll, getAllFromId } = require('./controller');
+const { getAll, getAllFromId, postOne, deleteOne, updateOne } = require('./controller.js');
 
 router.route('/reviews')
-  .get(getAll);
+  .get(getAll)
+  .post(postOne)
 router.route('/reviews/:id')
-  .get(getAllFromId);
+  .get(getAllFromId)
+  .delete(deleteOne)
+  .put(updateOne)
 
 
 module.exports = router;

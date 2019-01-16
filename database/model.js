@@ -2,20 +2,21 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./index.js');
 
-const airbenderMock = sequelize.define('airbenderMock', {
-  finalStar: { type: Sequelize.INTEGER, allowNull: false },
-  accuracyStar: { type: Sequelize.INTEGER, allowNull: false },
-  locationStar: { type: Sequelize.INTEGER, allowNull: false },
-  checkinStar: { type: Sequelize.INTEGER, allowNull: false },
-  cleanlinessStar: { type: Sequelize.INTEGER, allowNull: false },
-  valueStar: { type: Sequelize.INTEGER, allowNull: false },
-  communicationStar: { type: Sequelize.INTEGER, allowNull: false },
-  userId: { type: Sequelize.INTEGER, allowNull: false },
-  userName: { type: Sequelize.STRING, allowNull: false },
-  reviewContent: { type: Sequelize.TEXT, allowNull: false },
-  productId: { type: Sequelize.INTEGER },
+const airbenderMock = sequelize.define('airbendermock', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, allowNull: false },
+  finalstar: { type: Sequelize.INTEGER, allowNull: false },
+  accuracystar: { type: Sequelize.INTEGER, allowNull: false },
+  locationstar: { type: Sequelize.INTEGER, allowNull: false },
+  checkinstar: { type: Sequelize.INTEGER, allowNull: false },
+  cleanlinessstar: { type: Sequelize.INTEGER, allowNull: false },
+  valuestar: { type: Sequelize.INTEGER, allowNull: false },
+  communicationstar: { type: Sequelize.INTEGER, allowNull: false },
+  userid: { type: Sequelize.INTEGER, allowNull: false },
+  username: { type: Sequelize.STRING, allowNull: false },
+  reviewcontent: { type: Sequelize.TEXT, allowNull: false },
+  productid: { type: Sequelize.INTEGER },
   shijian: { type: Sequelize.STRING, allowNull: false },
-  userPic: { type: Sequelize.STRING },
+  userpic: { type: Sequelize.STRING },
 },
 {
   timestamps: false,
