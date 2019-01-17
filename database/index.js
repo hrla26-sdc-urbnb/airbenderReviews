@@ -23,7 +23,7 @@ const Sequelize = require('sequelize');
 //       console.log('connected to mysql!');
 //   });
 // 
-const sequelize = new Sequelize('airbenderreviews', 'ubuntu', 'password', {
+const sequelize = new Sequelize('airbenderreviews', 'ubuntu', '', {
   host: 'localhost',
   dialect: 'postgres',
   pool: {
