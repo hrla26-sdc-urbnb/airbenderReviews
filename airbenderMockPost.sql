@@ -10,22 +10,22 @@ create database airbenderReviews;
 \c airbenderreviews;
 create table airbendermock (
 	id SERIAL,
-	finalStar INT,
-	accuracyStar INT,
-	locationStar INT,
-	checkinStar INT,
-	cleanlinessStar INT,
-	valueStar INT,
-	communicationStar INT,
-	userId INT,
-	userName VARCHAR,
-	reviewContent TEXT,
-	productId INT,
+	finalstar INT,
+	accuracystar INT,
+	locationstar INT,
+	checkinstar INT,
+	cleanlinessstar INT,
+	valuestar INT,
+	communicationstar INT,
+	userid INT,
+	username VARCHAR,
+	reviewcontent TEXT,
+	productid INT,
 	shijian VARCHAR,
-	userPic VARCHAR,
+	userpic VARCHAR,
     PRIMARY KEY (id)
 );
 
 SELECT * from airbendermock INNER JOIN (SELECT id FROM airbendermock WHERE username like '%Kevin%') as virtualTable on virtualTable.id = airbendermock.id;
 
-\COPY airbendermock(finalStar, accuracyStar, locationStar, checkinStar, cleanlinessStar, valueStar, communicationStar, userId, userName, reviewContent, productId, shijian, userPic) FROM 'example.csv' DELIMITER ',' CSV HEADER;
+\COPY airbendermock(finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic) FROM 'example.csv' DELIMITER ',' CSV HEADER;
