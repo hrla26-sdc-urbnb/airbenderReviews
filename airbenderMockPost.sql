@@ -8,7 +8,7 @@ drop database if exists airbenderReviews;
 
 create database airbenderReviews;
 \c airbenderreviews;
-create table airbenderMock (
+create table airbendermock (
 	id SERIAL,
 	finalStar INT,
 	accuracyStar INT,
@@ -28,4 +28,4 @@ create table airbenderMock (
 
 SELECT * from airbendermock INNER JOIN (SELECT id FROM airbendermock WHERE username like '%Kevin%') as virtualTable on virtualTable.id = airbendermock.id;
 
-\COPY airbendermock(id, finalStar, accuracyStar, locationStar, checkinStar, cleanlinessStar, valueStar, communicationStar, userId, userName, reviewContent, productId, shijian, userPic) FROM 'example.csv' DELIMITER ',' CSV HEADER;
+\COPY airbendermock(finalStar, accuracyStar, locationStar, checkinStar, cleanlinessStar, valueStar, communicationStar, userId, userName, reviewContent, productId, shijian, userPic) FROM 'example.csv' DELIMITER ',' CSV HEADER;
