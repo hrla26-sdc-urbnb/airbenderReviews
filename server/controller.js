@@ -10,7 +10,8 @@ const getAll = (req, res) => {
 };
 
 const getAllFromId = (req, res) => {
-  const roomId = req.params.id;
+  const roomId = parseInt(req.params.id)
+  // const roomId = req.params.id;
   getAllFromIdHelper(roomId, (err, data) => {
     if(err) {
       console.log(err)
