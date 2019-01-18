@@ -18,14 +18,14 @@ const airbendermock = require('./model');
 // };
 
 
-const getAllHelper = (cb) => {
-  airbendermock.findAll({})
-    .then(cb(null, res))
-    .catch(err => cb(err));
-};
+// const getAllHelper = (cb) => {
+//   airbendermock.findAll({})
+//     .then(cb(null, res))
+//     .catch(err => cb(err));
+// };
 
 const getAllFromIdHelper = (roomId, cb) => {
-  airbendermock.findAll({ where: { productid: roomId }})
+  airbendermock.findAll({ where: { id: roomId }})
     .then(data=> {
      cb(null, data)
     })
@@ -34,7 +34,8 @@ const getAllFromIdHelper = (roomId, cb) => {
 
 
 const postOneHelper = (body, cb) => {
-  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = body;
+  let objBody = body[0];
+  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = objBody;
   airbendermock.create({
     finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic
   })
@@ -51,7 +52,8 @@ const deleteOneHelper = (deleteId, cb) => {
 }
 
 const updateOneHelper = (body, updateId, cb) => {
-  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = body;
+  let objBody = body[0];
+  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = objBody;
   airbendermock.update(
     { 
       finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic
@@ -78,5 +80,5 @@ const updateOneHelper = (body, updateId, cb) => {
 //   });
 // } 
 
-module.exports = { getAllHelper, getAllFromIdHelper, postOneHelper, deleteOneHelper, updateOneHelper };
+module.exports = { getAllFromIdHelper, postOneHelper, deleteOneHelper, updateOneHelper };
 // module.exports = { getAllFromIdHelper };
