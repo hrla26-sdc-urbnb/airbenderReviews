@@ -1,49 +1,61 @@
-// mysql connection setup
-// const mysql = require('mysql');
-// const connection = mysql.createConnection({
-//     host:"localhost",
-//     user:"root",
-//     password:"password",
-//     database:"airbenderReviews"
-// });
-// connection.connect(err=>{
-//     if (err) console.error(err);
-//     console.log('connected to mysql!');
-// });
-// const pg = require('pg');
-
-// const connectionString = 'postgres://postgres@localhost:2019/postgres';
-
-const Sequelize = require('sequelize');
-
-// const sequelize = new Sequelize('mysql://root:password@localhost/airbenderReviews');
-
-// pg.connect(connectionString, err=>{
-//       if (err) console.error(err);
-//       console.log('connected to mysql!');
-//   });
-// 
-// const sequelize = new Sequelize('airbenderreviews', 'ubuntu', 'password', {
-const sequelize = new Sequelize('airbenderreviews', '', '', {
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: '',
   host: 'localhost',
-  dialect: 'postgres',
-  // logging: false,
-  pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-  },
-  operatorsAliases: false
-});
+  database: 'airbenderreviews',
+  password: '',
+  port: 5432,
+})
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
+const getUserById = (roomId, cb) => {
+  pool.query('SELECT * FROM airbendermock WHERE productId = $1', [roomId], (error, results) => {
+    if (error) {
+      cb(error);
+    }
+    cb(null, results);
   })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+}
 
-module.exports = sequelize;
+const createUser = (body, cb) => {
+  // const { name, email } = request.body
+
+  pool.query('INSERT INTO airbendermock (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+    if (error) {
+      cb(error);
+    }
+    cb(null, results);
+  })
+}
+
+const updateUser = (body, updateId, cb) => {
+  let objBody = body[0];
+  // const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = objBody;
+  pool.query(
+    'UPDATE airbendermock SET finalstar = $1, accuracystar = $2 locationstar = $3 checkinstar = $4 cleanlinessstar = $5 valuestar = $6 communicationstar = $7 userid = $8 username = $9 reviewcontent = $10 productid = $11 shijian = $12 userpic = $13 WHERE id = $14',
+    [objBody.finalStar, objBody.accuracystar, objBody.locationstar, objBody.checkinstar, objBody.cleanlinessstar, objBody.valuestar, objBody.communicationstar, objBody.userid, objBody.username, objBody.reviewcontent, objBody.productid, objBody.shijian, objBody.userpic, updateId],
+    (error, results) => {
+      if (error) {
+        cb(error);
+      }
+      cb(null, results);
+    }
+  )
+}
+
+const deleteUser = (deleteId, cb) => {
+  // const id = parseInt(request.params.id)
+
+  pool.query('DELETE FROM airbendermock WHERE id = $1', [deleteId], (error, results) => {
+    if (error) {
+      cb(error);
+    }
+    cb(null, results)
+  })
+}
+
+module.exports = {
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+}
