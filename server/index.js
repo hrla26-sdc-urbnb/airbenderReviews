@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app');
-const db = require('../database/index');
-const airbenderMock = require('../database/model');
+// const db = require('../database/index');
+// const airbenderMock = require('../database/model');
 const port = 2019;
 const server = http.createServer(app);
 

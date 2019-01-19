@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { getAll, getAllFromId, postOne, deleteOne, updateOne } = require('./controller.js');
+const { getAllFromId, postOne, deleteOne, updateOne } = require('./controller.js');
 
 router.route('/reviews')
-  .get(getAll)
+//   .get(getAll)
   .post(postOne)
 router.route('/reviews/:id')
   .get(getAllFromId)
