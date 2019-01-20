@@ -54,10 +54,10 @@ export default class App extends React.Component {
 
   getReviewsById() {
     const roomId = generateRandomNumberBetween(11111, 11210);
-    axios.get(`http://18.224.27.63:2019/reviews/${roomId}`)
+    axios.get(`http://localhost:2019/reviews/${roomId}`)
     // axios.get(`http://localhost:2019/reviews/${roomId}`)
       .then((data) => {
-        console.log(`loaded all data for ${roomId}`, data.data, data.data.length);
+        // console.log(`loaded all data for ${roomId}`, data.data, data.data.length);
         // getting and averaging each star
         let finalAccuracy = 0;
         let finalCheckin = 0;
@@ -97,7 +97,7 @@ export default class App extends React.Component {
   }
 
   handleChange(e) {
-    console.log('yo', e.key);
+    // console.log('yo', e.key);
     let keyPress = e.key;
     let searchTerm = e.target.value;
     this.setState({ searchBar: searchTerm }, () => {
@@ -109,14 +109,14 @@ export default class App extends React.Component {
   }
 
   handleSearch() {
-    console.log('filter', this.state.searchBar);
+    // console.log('filter', this.state.searchBar);
     this.setState({ oldReviews: this.state.reviews})
     let filteredReviews = this.state.reviews.filter((element, i) => {
       return element.reviewContent.includes(this.state.searchBar);
     });
     this.setState({ reviews: filteredReviews, isSearchFound: 3, });
     if (filteredReviews.length < 1) {
-      console.log('searchBar not found');
+      // console.log('searchBar not found');
       filteredReviews.push({ reviewContent: `None of our guests have mentioned "${this.state.searchBar}"` });
       this.setState({ isSearchFound: 2, });
     }

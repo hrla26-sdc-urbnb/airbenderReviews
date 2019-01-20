@@ -5,7 +5,7 @@ import styles from './styles/ReviewList.css';
 const ReviewList = (props) => {
   const { currentReviews, isSearchFound, handleNotFound } = props;
   if (isSearchFound === 2) {
-    console.log('yeet', isSearchFound);
+    // console.log('yeet', isSearchFound);
     return (
       <div className={styles.searchNotFound}>
         <span className={styles.reviewNotFound}>
@@ -21,7 +21,7 @@ const ReviewList = (props) => {
   }
   
   if (isSearchFound === 3) {
-    console.log('yeet', isSearchFound);
+    // console.log('yeet', isSearchFound);
     return (
       <div className={styles.searchFound}>
         <span className={styles.notFoundButton} onClick={handleNotFound}>

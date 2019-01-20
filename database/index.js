@@ -28,6 +28,7 @@ const sequelize = new Sequelize('airbenderreviews', '', '', {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,
+  operatorsAliases: false,
   pool: {
       max: 5,
       min: 0,
