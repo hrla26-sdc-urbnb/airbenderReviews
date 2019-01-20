@@ -53,10 +53,11 @@ export default class App extends React.Component {
   // }
 
   getReviewsById() {
-    const roomId = generateRandomNumberBetween(11111, 11210);
+    const roomId = generateRandomNumberBetween(0, 100000);
     axios.get(`http://localhost:2019/reviews/${roomId}`)
     // axios.get(`http://localhost:2019/reviews/${roomId}`)
       .then((data) => {
+        console.log(data.data, "data")
         // console.log(`loaded all data for ${roomId}`, data.data, data.data.length);
         // getting and averaging each star
         let finalAccuracy = 0;
@@ -66,13 +67,14 @@ export default class App extends React.Component {
         let finalLocation = 0;
         let finalValue = 0;
         for (let i = 0; i < data.data.length; i++) {
-          finalAccuracy += data.data[i].accuracyStar;
-          finalCheckin += data.data[i].checkinStar;
-          finalCleanliness += data.data[i].cleanlinessStar;
-          finalCommunication += data.data[i].communicationStar;
-          finalLocation += data.data[i].locationStar;
-          finalValue += data.data[i].valueStar;
+          finalAccuracy += data.data[i].accuracystar;
+          finalCheckin += data.data[i].checkinstar;
+          finalCleanliness += data.data[i].cleanlinessstar;
+          finalCommunication += data.data[i].communicationstar;
+          finalLocation += data.data[i].locationstar;
+          finalValue += data.data[i].valuestar;
         }
+        console.log(finalAccuracy, 'finalacuracy')
         this.setState({
           reviews: data.data,
           totalEntries: data.data.length,
@@ -82,8 +84,9 @@ export default class App extends React.Component {
           communicationAvg: Math.ceil(finalCommunication / data.data.length),
           locationAvg: Math.ceil(finalLocation / data.data.length),
           valueAvg: Math.ceil(finalValue / data.data.length),
+        }, () => {
+          this.setState({ finalAvg: Math.ceil((this.state.accuracyAvg + this.state.checkinAvg + this.state.cleanlinessAvg + this.state.communicationAvg + this.state.locationAvg + this.state.valueAvg) / 6) });
         });
-        this.setState({ finalAvg: Math.ceil((this.state.accuracyAvg + this.state.checkinAvg + this.state.cleanlinessAvg + this.state.communicationAvg + this.state.locationAvg + this.state.valueAvg) / 6) });
       })
       .catch(err => console.error(err));
   }
@@ -155,6 +158,7 @@ export default class App extends React.Component {
       isCurrentPage,
       isSearchFound,
     } = this.state;
+    console.log(finalAvg, 'finalAvg')
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
     const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);

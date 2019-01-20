@@ -25,7 +25,7 @@ const airbendermock = require('./model');
 // };
 
 const getAllFromIdHelper = (roomId, cb) => {
-  airbendermock.findAll({ where: { id: roomId }})
+  airbendermock.findAll({ where: { productid: roomId }})
     .then(data=> {
      cb(null, data)
     })
