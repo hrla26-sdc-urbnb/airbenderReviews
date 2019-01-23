@@ -2,8 +2,8 @@ config:
   target: 'http://localhost:2019'
   processor: "./my_function.js"
   phases:
-    - duration: 60
-      arrivalRate: 450
+    - duration: 1200
+      arrivalRate: 800
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
@@ -12,3 +12,4 @@ scenarios:
       - function: "generateRandomData"
       - get:
           url: "/reviews/{{ id }}"
+          count: 6

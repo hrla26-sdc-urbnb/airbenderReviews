@@ -20,18 +20,18 @@ let server = http.createServer(function(req, res) {
     'access-control-allow-headers': 'Origin, X-Requested-With, Content-Type, Accept',
     'Content-Type': 'application/json'
   }
-  console.log(req.url, 'here is url')
+  // console.log(req.url, 'here is url')
   let endpoint;
   if(req.url !== '/' && req.url !== '/bundle.js'){
     
-    console.log(req.url, 'here is url3')
+    // console.log(req.url, 'here is url3')
     endpoint = req.url.match(/\d+/)[0];
   }
 
 //   if (req.url.slice(0, 8) === "/reviews") {
     if (req.method === "GET") {
       if (req.url === '/') {
-        console.log(req.url, 'here is url2')
+        // console.log(req.url, 'here is url2')
 
         headers['Content-Type'] = 'text/html'
         fs.readFile(path.join(__dirname, '../client/dist/index.html'), 'utf8', (err, data) => {
@@ -39,13 +39,13 @@ let server = http.createServer(function(req, res) {
           //   res.writeHead(404, headers);
           //   res.end(err);
           // }
-          console.log(data);
+          // console.log(data);
           res.writeHead(200, headers);
           res.end(data);
         })
       } else if(req.url === '/bundle.js'){
         fs.readFile(path.join(__dirname, '../client/dist/bundle.js'), 'utf8', (err, data) => {
-          console.log(data);
+          // console.log(data);
           res.writeHead(200, headers);
           res.end(data);
       })} else if (endpoint) {
@@ -64,7 +64,7 @@ let server = http.createServer(function(req, res) {
           }
         });
       } else {
-        console.log(req.url, 'its this')
+        // console.log(req.url, 'its this')
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end("NOT FOUND");
       }

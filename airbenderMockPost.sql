@@ -4,10 +4,10 @@ psql -f airbenderMockPost.sql airbenderReviews
 psql airbenderReviews < airbenderMockPost.sql
 
 
-drop database if exists airbenderReviews;
+drop database if exists airbendeReviews;
 
 create database airbenderReviews;
-\c airbenderreviews;
+\c airbenderReviews;
 create table airbendermock (
 	id SERIAL,
 	finalstar INT,
