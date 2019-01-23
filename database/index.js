@@ -25,8 +25,10 @@ const Sequelize = require('sequelize');
 // 
 // const sequelize = new Sequelize('airbenderreviews', 'ubuntu', 'password', {
 const sequelize = new Sequelize('airbenderreviews', '', '', {
-  host: 'localhost',
   dialect: 'postgres',
+  logging: false,
+  host: '13.58.112.63',
+  port: 5432,
   logging: false,
   operatorsAliases: false,
   pool: {
@@ -35,7 +37,6 @@ const sequelize = new Sequelize('airbenderreviews', '', '', {
       acquire: 30000,
       idle: 10000
   },
-  // operatorsAliases: false
 });
 
 sequelize
