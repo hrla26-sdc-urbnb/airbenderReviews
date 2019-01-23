@@ -1,4 +1,4 @@
-let nr = require('newrelic');
+// let nr = require('newrelic');
 let http = require('http');
 const fs = require('fs');
 // let url = require("url");

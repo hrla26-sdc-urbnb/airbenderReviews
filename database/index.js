@@ -24,7 +24,7 @@ const Sequelize = require('sequelize');
 //   });
 // 
 // const sequelize = new Sequelize('airbenderreviews', 'ubuntu', 'password', {
-const sequelize = new Sequelize('airbenderreviews', '', '', {
+const sequelize = new Sequelize('airbenderreviews', 'postgres', 'password', {
   dialect: 'postgres',
   logging: false,
   host: '13.58.112.63',
