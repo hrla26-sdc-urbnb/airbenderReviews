@@ -24,6 +24,19 @@ const Sequelize = require('sequelize');
 //   });
 // 
 // const sequelize = new Sequelize('airbenderreviews', 'ubuntu', 'password', {
+// const sequelize = new Sequelize('airbenderreviews', '', '', {
+//   dialect: 'postgres',
+//   logging: false,
+//   host: 'localhost',
+//   operatorsAliases: false,
+//   pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
+//   },
+// });
+
 const sequelize = new Sequelize('airbenderreviews', 'postgres', 'password', {
   dialect: 'postgres',
   logging: false,
