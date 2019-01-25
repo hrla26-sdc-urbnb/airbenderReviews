@@ -17,7 +17,6 @@ const airbendermock = require('./model');
 //   });
 // };
 
-
 // const getAllHelper = (cb) => {
 //   airbendermock.findAll({})
 //     .then(cb(null, res))
@@ -34,8 +33,23 @@ const getAllFromIdHelper = (roomId, cb) => {
 
 
 const postOneHelper = (body, cb) => {
-  let objBody = body[0];
-  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = objBody;
+  // let objBody = body;
+  // console.log('objBody', objBody)
+  const { 
+    finalstar,
+    accuracystar,
+    locationstar,
+    checkinstar,
+    cleanlinessstar,
+    valuestar,
+    communicationstar,
+    userid,
+    username,
+    reviewcontent,
+    productid,
+    shijian,
+    userpic
+  } = body;
   airbendermock.create({
     finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic
   })
@@ -52,8 +66,21 @@ const deleteOneHelper = (deleteId, cb) => {
 }
 
 const updateOneHelper = (body, updateId, cb) => {
-  let objBody = body[0];
-  const {finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic} = objBody;
+  const { 
+    finalstar,
+    accuracystar,
+    locationstar,
+    checkinstar,
+    cleanlinessstar,
+    valuestar,
+    communicationstar,
+    userid,
+    username,
+    reviewcontent,
+    productid,
+    shijian,
+    userpic
+  } = body;
   airbendermock.update(
     { 
       finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic
