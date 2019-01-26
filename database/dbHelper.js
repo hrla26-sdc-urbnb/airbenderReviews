@@ -33,8 +33,7 @@ const getAllFromIdHelper = (roomId, cb) => {
 
 
 const postOneHelper = (body, cb) => {
-  // let objBody = body;
-  // console.log('objBody', objBody)
+  let objBody = body[0];
   const { 
     finalstar,
     accuracystar,
@@ -49,7 +48,7 @@ const postOneHelper = (body, cb) => {
     productid,
     shijian,
     userpic
-  } = body;
+  } = objBody;
   airbendermock.create({
     finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic
   })
@@ -66,6 +65,7 @@ const deleteOneHelper = (deleteId, cb) => {
 }
 
 const updateOneHelper = (body, updateId, cb) => {
+  let objBody = body[0];
   const { 
     finalstar,
     accuracystar,
@@ -80,7 +80,7 @@ const updateOneHelper = (body, updateId, cb) => {
     productid,
     shijian,
     userpic
-  } = body;
+  } = objBody;
   airbendermock.update(
     { 
       finalstar, accuracystar, locationstar, checkinstar, cleanlinessstar, valuestar, communicationstar, userid, username, reviewcontent, productid, shijian, userpic

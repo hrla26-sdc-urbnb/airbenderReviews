@@ -57,7 +57,6 @@ export default class App extends React.Component {
     axios.get(`http://18.188.223.89:2019/api/reviews/${roomId}`)
     // axios.get(`http://localhost:2019/reviews/${roomId}`)
       .then((data) => {
-        console.log(data.data, "data")
         // console.log(`loaded all data for ${roomId}`, data.data, data.data.length);
         // getting and averaging each star
         let finalAccuracy = 0;
@@ -74,7 +73,6 @@ export default class App extends React.Component {
           finalLocation += data.data[i].locationstar;
           finalValue += data.data[i].valuestar;
         }
-        console.log(finalAccuracy, 'finalacuracy')
         this.setState({
           reviews: data.data,
           totalEntries: data.data.length,
@@ -158,7 +156,6 @@ export default class App extends React.Component {
       isCurrentPage,
       isSearchFound,
     } = this.state;
-    console.log(finalAvg, 'finalAvg')
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
     const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
